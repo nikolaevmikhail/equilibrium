@@ -3,9 +3,17 @@
 ## Description
 
 This program is made for solving the equilibrium problem that appears in
-the Ulf Dieckmann and Richard Law's population dynamics model. The solution to
-this problem can be described as a function that satisfies an integral equation.
-The second order closure of the third spatial moment is used in this equation:
+the Ulf Dieckmann and Richard Law's population dynamics model. The problem can
+be expressed in a formal way as a solution to the following system of equations:
+```math
+\left\{\begin{aligned}
+    0 &= (b - d)N - s \int\limits_{\mathbb{R}^n} w(y) C(y)\, \mathrm{d}y, \\
+    0 &= b m(x) N + b\int\limits_{\mathbb{R}^n} m(y) C(x - y)\, \mathrm{d}y - \\
+      &- \big(d  + s w(x)\big) C(x) - s\int\limits_{\mathbb{R}^n} w(y) T(x, y)\, \mathrm{d}y
+\end{aligned}\right.
+```
+where N and C are unknown.
+The second order closure of the third spatial moment T is used in the current case:
 ```math
     T^{(2)}_{\alpha\beta\gamma}(x, y) =
         \dfrac{1}{\alpha + \beta} \left(
