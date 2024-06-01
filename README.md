@@ -6,7 +6,7 @@ This program is made for solving the equilibrium problem that appears in
 the Ulf Dieckmann and Richard Law's population dynamics model. The solution to
 this problem can be described as a function that satisfies an integral equation.
 The second order closure of the third spatial moment is used in this equation:
-$$
+```math
     T^{(2)}_{\alpha\beta\gamma}(x, y) =
         \dfrac{1}{\alpha + \beta} \left(
             \alpha \dfrac{C(x)C(y)}{N} +
@@ -14,14 +14,14 @@ $$
             \gamma \dfrac{C(y)C(y - x)}{N} -
             \beta N^3
         \right).
-$$
+```
 
 See the papers to get more information about the model and the problem:
 - https://user.iiasa.ac.at/~dieckman/reprints/DieckmannLaw2000.pdf
 - https://user.iiasa.ac.at/~dieckman/reprints/LawDieckmann2000a.pdf
 - https://user.iiasa.ac.at/~dieckman/reprints/MurrellEtal2004.pdf
 
-## Compiling:
+## Compiling
 
 There is a makefile that processes the project compilation. You can use the
 following compilation flags for `g++` to change some special behaviour. These
@@ -34,17 +34,17 @@ flags just define preprocess variables:
 | **-DBAR_WIDTH=** *<int>* | Set a progress bar width in character number | 70 |
 | **-DBAR_CHAR=** *<char>* | Set a progress bar character | '#' |
 
-### Building:
+### Building
 ```    
 make
 ```
 
-### Cleaning:
+### Cleaning
 ```
 make clean
 ```
 
-## CMD arguments:
+## CMD arguments
 
 You can give the program command line arguments. Each argument has a name
 that starts with '-' and usually contains only one letter. The argument value
@@ -93,7 +93,7 @@ possible kernel types:
 
 Default kernels are the equal kurtic kernels with the parameters `1.0 1.0`.
 
-### Numerical method choosing
+### Numerical methods
 
 By default the program uses nonlinear Neuman's method.
 You can change the method, but **only in the 1D or 3D case**. When using linear
@@ -114,12 +114,12 @@ where `<method name>` can be one of the folowing:
 | nystrom | Nystrom's method that uses an algebraic equation system approximation |
 
 
-### Example:
+### Example
 ```
 ./neuman -i 2000 -r 2.2 -kn 1.3 3.45 -p solution.txt -r n -D 3 -s 2.0 -A 0.3
 ```
 
-## Output:
+## Output
 
 The program saves a calculated second moment in the file, defined by the
 `-p` argument value (if it doesn't equal to `n`), in two columns
@@ -129,7 +129,7 @@ the progress bar and, after completion, the first moment value and the second
 moment value in zero. If neither **-DASCETIC** nor **-DSHOUT** is set then the
 program prints the value of the approximate first moment on each iteration.
 
-## Dependencies:
+## Dependencies
 
 Programm uses [fftw-3.3.7](http://www.fftw.org/) library for performing
 convolutions using Fourier method.
